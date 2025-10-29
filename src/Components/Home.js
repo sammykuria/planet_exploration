@@ -1,35 +1,27 @@
 import React, { useEffect,useState } from 'react'
+import { supabase } from './supabaseClient'
 
 function Home() {
     const [planets, setPlanets] = useState([])
-    const [loading, setLoading] = useState(true)
 
-useEffect(() => {
-  const fetchPlanets = async () => {
-    try {
-      const res = await fetch("https://api.le-systeme-solaire.net/rest/bodies/", {
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_SOLAR_API_KEY}`,
-        },
-      });
 
-      const data = await res.json();
-      const filtered = data.bodies.filter((b) => b.isPlanet);
-      setPlanets(filtered);
-    } catch (error) {
-      console.error("Error fetching planets:", error);
-    } finally {
-      setLoading(false);
+    useEffect(() => {
+    fetchPlanets()
+  }, [])
+
+    async function fetchPlanets() {
+      const { data, error } = await supabase
+      .from('planets')
+      .select("*")
+      .order('created_at', {ascending:false})
+
+      if (error) console.error('Error fetching data:',error)
+       else setPlanets(data)
+      
     }
-  };
-
-  fetchPlanets();
-}, []);
 
 
-    if (loading) {
-        return <p className="text-center text-gray-400 mt-10">Loading palnets ...</p>
-    }
+
 
 
 
@@ -38,21 +30,20 @@ useEffect(() => {
       apa ni home
 
 
-     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
-      {planets.map((planet) => (
-        <div
-          key={planet.id}
-          className="bg-gray-900 text-white rounded-2xl p-4 shadow-lg hover:scale-105 transition-transform cursor-pointer"
-        >
-          <h2 className="text-xl font-bold mb-2 text-center">
-            {planet.englishName}
-          </h2>
-          <p className="text-sm text-gray-300 text-center">
-            Gravity: {planet.gravity} m/s²
-          </p>
-          <p className="text-sm text-gray-300 text-center">
-            Density: {planet.density}
-          </p>
+     <div className="grid gap-4">
+      {planets.map(planet => (
+        <div key={planet.id} className="p-4 border rounded-lg bg-gray-900 text-white">
+          <img src={planet.image_url} alt='wee'></img>
+          <h2 className="text-xl font-bold">{planet.name}</h2>
+         
+          <div className='bumbaa'>
+          <p>Description: {planet.description }</p>
+          <p>Distance: {planet.distance_from_earth}</p>
+          <p>Temperature: {planet.surface_temperature}</p>
+          <p>Gravity: {planet.gravity}</p>
+          <p>Habitability: {planet.habitability_score}%</p>
+            </div>
+
         </div>
       ))}
     </div>
