@@ -1,12 +1,343 @@
-.App{
- background: radial-gradient(circle at 20% 20%, #001f3f, transparent 40%),
-              radial-gradient(circle at 80% 80%, #004d40, transparent 40%),
-              radial-gradient(circle at 60% 30%, #00bbd4d7, transparent 40%),
-              #000; /* base black */
-  background-blend-mode: screen;
-  color: white;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+
+
+body {
+  background: radial-gradient(circle at 25% 25%, #050505, #000) fixed;
+  color: #eaeaea;
+  font-family: "Orbitron", sans-serif;
+  /* overflow-x: hidden; */
+  margin: 0;
+}
+main, .page-content {
+  padding-top: 120px; /* This ensures navbar doesn’t overlap content */
 }
 
-.bumbaa{
+/* If you want to bring back the space depth */
+.App {
+  position: relative;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(0, 40, 80, 0.25), transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(30, 10, 60, 0.35), transparent 70%),
+    radial-gradient(circle at 60% 30%, rgba(80, 200, 255, 0.08), transparent 70%),
+    #000;
+  background-blend-mode: screen;
+  color: #fff;
+}
+
+
+.planetcontainer{
+  background-color: rgba(0, 0, 0, 0.164);
+  padding: 30px;
+  margin: 20px;
   width: 30%;
+}
+
+.righteouscontainer {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  /* max-width: 600px; */
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.righteouscontainer img {
+  width: 100%;
+  height: 100vh;
+  display: block;
+  border-radius: 20px;
+  filter: brightness(70%);
+  transition: all 0.4s ease;
+}
+
+/* .righteouscontainer:hover img {
+  filter: brightness(60%) blur(1px);
+  transform: scale(1.05);
+} */
+
+/* Overlay text */
+.planets {
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 1s ease forwards;
+}
+.planets2 {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  color: white;
+  /* background: rgba(0, 0, 0, 0.3);
+  padding: 1rem 2rem;
+  border-radius: 15px; */
+  backdrop-filter: blur(4px);
+  animation: fadeIn 1s ease forwards;
+}
+.planets2 h3{ 
+font-size: 90px;
+font-weight: 300;
+line-height: 24px;
+}
+.planets3 h3{ 
+font-size: 30px;
+font-weight: 300;
+line-height: 24px;
+}
+.planets4 h3{ 
+font-size: 40px;
+font-weight: 300;
+line-height: 24px;
+}
+.planets4 p{ 
+font-size: 13px;
+font-weight: 300;
+line-height: 24px;
+}
+
+.planets3 {
+  position: absolute;
+  top: 20%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  color: white;
+  /* background: rgba(0, 0, 0, 0.3);
+  padding: 1rem 2rem;
+  border-radius: 15px; */
+  backdrop-filter: blur(4px);
+  animation: fadeIn 1s ease forwards;
+}
+
+.planets4 {
+  position: absolute;
+  top: 80%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  color: white;
+  /* background: rgba(0, 0, 0, 0.3);
+  padding: 1rem 2rem;
+  border-radius: 15px; */
+  backdrop-filter: blur(4px);
+  animation: fadeIn 1s ease forwards;
+}
+
+
+.planets h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px #00bcd4;
+}
+
+.planets p {
+  font-size: 1rem;
+  color: #d0f0ff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -60%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+
+.navbar-container {
+  position: fixed;
+  top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.navbar {
+  width: 60%;
+  background: rgba(255, 255, 255, 0.05); /* subtle transparent glass effect */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 1.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  position: relative;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #eaeaea;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 600;
+  transition: color 0.8s ease;
+}
+
+.navbar a:hover {
+ background-color: #000000;
+ padding: 10px;
+  border-radius: 15px;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 8px rgba(255, 50, 50, 0.5);}
+
+/* Active link style */
+.navbar a.active {
+  background-color: #000000;
+  border-radius: 15px;
+  color: rgb(255, 252, 252);
+}
+
+/* Button style */
+.join-btn {
+  background: #ff3b3b;
+  border: none;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.join-btn:hover {
+  background: #ff5e5e;
+  box-shadow: 0 0 15px rgba(255, 60, 60, 0.5);
+}
+
+
+
+
+
+.home {
+  background-color: #0b0b0f;
+  min-height: 100vh;
+  color: white;
+  padding-top: 6%;
+  text-align: center;
+} 
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.slider-container {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider {
+  width: 85%;
+  overflow: hidden;
+}
+
+.slider-inner {
+  display: flex;
+  gap: 1rem;
+}
+
+.smooth-slide {
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); /* 👈 smooth, soft easing */
+}
+
+.planet-card {
+  flex: 0 0 calc(25% - 1rem);
+ 
+  border-radius: 16px;
+  padding: 1rem;
+  /* box-shadow:
+    0 0 15px rgba(0, 0, 0, 0.7),
+    0 0 40px rgba(0, 60, 120, 0.15);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s ease; */
+}
+
+.planet-card:hover {
+   background: radial-gradient(circle at 30% 30%, #0e0e12, #1a1a20);
+  border: 1px solid rgba(90, 90, 120, 0.2);
+  /* transform: translateY(-6px) scale(1.05); */
+  /* box-shadow:
+    0 0 20px rgba(0, 120, 255, 0.25),
+    0 0 50px rgba(0, 40, 100, 0.4); */
+}
+
+/* --- Planet Image --- */
+.planet-card img {
+  width: 100%;
+  height: 40%;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 0.8rem;
+   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s ease;
+  /* box-shadow: 0 0 12px rgba(0, 100, 255, 0.25); */
+}
+.planet-card img:hover {
+  transform: translateY(-8px) scale(1.32);
+
+}
+
+/* --- Texts --- */
+.planet-card h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #b0d8ff;
+  text-shadow: 0 0 8px rgba(0, 80, 255, 0.3);
+}
+
+.planet-card p {
+  font-size: 0.9rem;
+  color: #d2d2e2;
+  line-height: 1.4;
+}
+
+.slider-container {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+  opacity: 0.7;
+}
+
+.arrow:hover {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+.arrow.left {
+  margin-right: 1rem;
+}
+
+.arrow.right {
+  margin-left: 1rem;
 }
