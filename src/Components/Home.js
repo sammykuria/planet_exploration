@@ -5,7 +5,17 @@ import { Link } from 'react-router-dom';
 
 function Home() {
   const [planets, setPlanets] = useState([]);
+  const [bodies, setBodies ] = useState([])
   const [index, setIndex] = useState(0);
+
+
+  useEffect(() => {
+    const fetchBodies = async () => {
+      try {
+        const
+      }
+    }
+  })
 
   useEffect(() => {
     fetchPlanets();
